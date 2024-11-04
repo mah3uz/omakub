@@ -10,7 +10,7 @@ cd -
 # Only attempt to set configuration if Neovim has never been run
 if [ ! -d "$HOME/.config/nvim" ]; then
 	# Use LazyVim
-	cp -r ~/.local/share/omakub/config/neovim/nvim ~/.config
+	git clone https://github.com/mah3uz/nvim.git ~/.config/nvim
 
 	# Default to Tokyo Night theme
 	cp ~/.local/share/omakub/themes/tokyo-night/neovim.lua ~/.config/nvim/lua/plugins/theme.lua
@@ -21,3 +21,5 @@ if [[ -d ~/.local/share/applications ]]; then
 	sudo rm -rf /usr/share/applications/nvim.desktop
 	source ~/.local/share/omakub/applications/Neovim.sh
 fi
+
+cp ~/.local/share/omakub/configs/ideavimrc ~/.ideavimrc
