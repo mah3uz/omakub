@@ -28,9 +28,6 @@ unfocused_hollow = false
 blinking = "Off"
 shape = "Block"
 
-[mouse]
-hide_when_typing = true
-
 [[mouse.bindings]]
 action = "PasteSelection"
 mouse = "Middle"

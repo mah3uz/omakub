@@ -3,7 +3,6 @@
 
 [main]
 shift = oneshot(shift)
-meta = oneshot(meta)
 control = oneshot(control)
 
 leftalt = oneshot(alt)
