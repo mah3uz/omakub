@@ -1,7 +1,6 @@
 return {
-	{ "ellisonleao/gruvbox.nvim" },
 	{
-		"LazyVim/LazyVim",
+		"AstroNvim/astroui",
 		opts = {
 			colorscheme = "gruvbox",
 		},

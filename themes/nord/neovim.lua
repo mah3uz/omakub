@@ -1,9 +1,8 @@
 return {
-	{ "EdenEast/nightfox.nvim" },
 	{
-		"LazyVim/LazyVim",
+		"AstroNvim/astroui",
 		opts = {
-			colorscheme = "nordfox",
+			colorscheme = "nord,
 		},
 	},
 }

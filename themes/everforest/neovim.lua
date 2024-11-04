@@ -1,10 +1,8 @@
 return {
-	{ "neanias/everforest-nvim" },
 	{
-		"LazyVim/LazyVim",
+		"AstroNvim/astroui",
 		opts = {
 			colorscheme = "everforest",
-			background = "soft",
 		},
 	},
 }

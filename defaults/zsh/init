@@ -1,0 +1,113 @@
+# Init various applications
+
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
+  # like normal z when used with arguments but displays an fzf prompt when used without.
+  unalias z 2> /dev/null
+  z() {
+    [ $# -gt 0 ] && _z "$*" && return
+    cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+  }
+fi
+
+if command -v fzf &> /dev/null; then
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+  # fzf settings https://medium.com/better-programming/boost-your-command-line-productivity-with-fuzzy-finder-985aa162ba5d
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  # fzf's command
+  export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
+  # CTRL-T's command
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  # ALT-C's command
+  export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
+
+  # for more info see fzf/shell/completion.zsh
+  _fzf_compgen_path() {
+    fd . "$1"
+  }
+  _fzf_compgen_dir() {
+    fd --type d . "$1"
+  }
+
+  export FZF_DEFAULT_OPTS="
+  --layout=reverse
+  --info=inline
+  --height=80%
+  --multi
+  --preview-window=:hidden
+  --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (lsd --tree {} | less)) || echo {} 2> /dev/null | head -200'
+  --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
+  --prompt='∼ ' --pointer='▶' --marker='✓'
+  --bind '?:toggle-preview'
+  --bind 'ctrl-a:select-all'
+  --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+  --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
+  --bind 'ctrl-v:execute(code {+})'
+  "
+  bindkey "ALT-C" fzf-cd-widget
+
+  # find-in-file - usage: fif <SEARCH_TERM>
+  fif() {
+    if [ ! "$#" -gt 0 ]; then
+      echo "Need a string to search for!";
+      return 1;
+    fi
+
+    rg --files-with-matches --no-messages "$1" | fzf $FZF_PREVIEW_WINDOW --preview "rg --ignore-case --pretty --context 10 '$1' {}"
+  }
+fi
+
+# Yazi filemanager
+if command -v yazi &> /dev/null; then
+  function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+      builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+  }
+fi
+
+# Go init
+if command -v go &> /dev/null; then
+  export PATH=$PATH:/usr/local/go/bin
+  export GOPATH=$HOME/go
+  export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+fi
+
+# Composer global package init
+if command -v composer &> /dev/null; then
+  export PATH=$PATH:$HOME/.composer/vendor/bin
+fi
+
+# Init Rust cargo
+if command -v cargo &> /dev/null; then
+  export PATH="$PATH:$HOME/.cargo/bin"
+fi
+
+# call onefetch if we navigate to a new coderepo
+if command -v onefetch &> /dev/null; then
+  LAST_REPO=""
+  cd() {
+    z "$@";
+    git rev-parse 2>/dev/null;
+
+    if [ $? -eq 0 ]; then
+      if [ "$LAST_REPO" != $(basename $(git rev-parse --show-toplevel)) ]; then
+        onefetch
+        LAST_REPO=$(basename $(git rev-parse --show-toplevel))
+      fi
+    fi
+  }
+fi
+
+# direnv init hook
+if command -v direnv &> /dev/null; then
+  eval "$(direnv hook zsh)"
+fi

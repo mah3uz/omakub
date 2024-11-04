@@ -1,0 +1,58 @@
+default_layout "terminal"
+
+// set the theme
+theme "catppuccin-mocha"
+ui {
+    pane_frames {
+        rounded_corners true
+    }
+}
+
+keybinds {
+    shared_except "locked" {
+        bind "Alt m" {
+            LaunchPlugin "file:~/.config/zellij/plugins/monocle.wasm" {
+                floating true
+                kiosk true
+            };
+            SwitchToMode "Normal"
+        }
+        bind "Ctrl y" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/harpoon.wasm" {
+                floating true; move_to_focused_tab true;
+            }
+        }
+        bind "Ctrl u" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
+                floating true
+                ignore_case true
+                quick_jump true
+            }
+        }
+        // Zelliz forgot-plugin
+        bind "Ctrl k" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij_forgot.wasm" {
+                floating true
+            }
+        }
+    }
+}
+
+plugins {
+    // Good practice: use aliases for plugins instead of direct reference in layout
+
+    // -----------------------
+    // built-in plugins
+    // -----------------------
+    tab-bar location="zellij:tab-bar"
+    status-bar location="zellij:status-bar"
+    strider location="zellij:strider"
+    compact-bar location="zellij:compact-bar"
+    session-manager location="zellij:session-manager"
+    welcome-screen location="zellij:session-manager" {
+        welcome_screen true
+    }
+    filepicker location="zellij:strider" {
+        cwd "/"
+    }
+}

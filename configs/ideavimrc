@@ -1,0 +1,123 @@
+" vim bindings in IDEA Intellij
+" https://github.com/JetBrains/ideavim#executing-ide-actions
+
+
+" cross-platform clipboard
+set clipboard^=unnamed,unnamedplus
+" set lime number
+set number relativenumber
+set scrolloff=8
+" idea
+command! Restart action RestartIde
+command! ReloadVim action IdeaVim.ReloadVimRc.reload
+
+" search options
+set hlsearch incsearch ignorecase smartcase
+nnoremap <esc><esc> :noh<return>
+
+" set command menu
+"set wildmenu
+let mapleader=" "
+
+" paste without yank
+nmap p "_dP
+vmap p "_dP
+" zoom editor
+nmap <leader>Z <Action>(HideAllWindows)
+" duplicate
+nmap <M-d> <Action>(EditorDuplicate)
+vmap <M-d> <Action>(EditorDuplicate)
+" jump tabs
+nmap H <Action>(PreviousTab)
+nmap L <Action>(NextTab)
+nmap <leader>qq <Action>(CloseAllEditors)
+" coding"
+nmap gD <Action>(GotoDeclaration)
+nmap gy <Action>(GotoTypeDeclaration)
+nmap gI <Action>(GotoImplementation)
+nmap <Leader>ca <Action>(GotoAction)
+nmap <leader>cf <Action>(ReformatCode)
+nmap <leader>cs <Action>(ActivateStructureToolWindow)
+nmap <leader>F <Action>(ReformatCode)
+nmap <Leader>cr <Action>(RenameElement)
+nmap [e <Action>(GotoPreviousError)
+nmap ]e <Action>(GotoNextError)
+nmap <leader>fr <Action>(RecentFiles)
+nmap <leader><leader><Action(GotoClass)
+
+" Delete without yank
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
+
+"""""""""""""""""""""
+" Vim hardmode
+" Remove newbie crutches in Command Mode
+cnoremap <Down> <Nop>
+cnoremap <Left> <Nop>
+cnoremap <Right> <Nop>
+cnoremap <Up> <Nop>
+"cnoremap <BS> <Nop>
+cnoremap <DEL> <Nop>
+
+
+" Remove newbie crutches in Insert Mode
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+inoremap <Up> <Nop>
+"inoremap <BS> <Nop>
+inoremap <DEL> <Nop>
+
+" Remove newbie crutches in Normal Mode
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Up> <Nop>
+"nnoremap <BS> <Nop>
+nnoremap <DEL> <Nop>
+
+" Remove newbie crutches in Visual Mode
+vnoremap <Down> <Nop>
+vnoremap <Left> <Nop>
+vnoremap <Right> <Nop>
+vnoremap <Up> <Nop>
+"vnoremap <BS> <Nop>
+vnoremap <DEL> <Nop>
+
+
+set commentary
+set which-key
+
+" disable the timeout option
+set notimeout
+
+
+""""""""""""""""""""""
+" NerdTree configuration
+" https://github.com/JetBrains/ideavim/wiki/NERDTree-support
+set NERDTree
+nnoremap <Leader>e :NERDTreeToggle<CR>
+let g:NERDTreeMapActivateNode = 'l'
+let g:NERDTreeMapPreview = 'E'
+let g:NERDTreeMapOpenInTab = 't'
+let g:NERDTreeMapOpenInTabSilent = 'T'
+let g:NERDTreeMapOpenSplit = 's'
+let g:NERDTreeMapPreviewSplit = 'S'
+let g:NERDTreeMapOpenVSplit = 'v'
+let g:NERDTreeMapPreviewVSplit = 'V'
+let g:NERDTreeMapOpenRecursively = 'L'
+let g:NERDTreeMapCloseDir = 'h'
+let g:NERDTreeMapCloseChildren = 'H'
+let g:NERRTreeMapJumpRoot = 'gf'
+let g:NERDTreeMapJumpParent = 'gh'
+let g:NERDTreeMapJumpFirstChild = 'K'
+let g:NERDTreeMapJumpLastChild = 'J'
+let g:NERDTreeMapJumpNextSibling = 'j'
+let g:NERDTreeMapJumpPrevSibling = 'k'
+let g:NERDTreeMapRefresh = 'R'
+let g:NERDTreeMapRefreshRoot = 'gR'
+let g:NERDTreeMapMenu = '<Tab>'
+let g:NERDTreeMapQuit = 'q'
+"let g:NERDTreeMapToggleZoom = '<SP>m'
+

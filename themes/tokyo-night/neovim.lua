@@ -1,6 +1,6 @@
 return {
 	{
-		"LazyVim/LazyVim",
+		"AstroNvim/astroui",
 		opts = {
 			colorscheme = "tokyonight",
 		},

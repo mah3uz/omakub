@@ -1,14 +1,42 @@
+live_config_reload = true
+
 [env]
 TERM = "xterm-256color"
 
 [shell]
 program = "zellij"
 
+[bell]
+animation = "EaseOutExpo"
+duration = 0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
 [window]
-padding.x = 16
-padding.y = 14
+padding.x = 0
+padding.y = 0
 decorations = "None"
 opacity = 0.98
+
+[cursor]
+blink_interval = 500
+blink_timeout = 5
+unfocused_hollow = false
+
+[cursor.style]
+blinking = "Off"
+shape = "Block"
+
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [keyboard]
 bindings = [
