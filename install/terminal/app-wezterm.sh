@@ -5,5 +5,5 @@ sudo apt update
 sudo apt install wezterm
 
 if [ ! -d "$HOME/.config/wezterm" ]; then
-    cp -r ~/.local/share/omkub/configs/wezterm ~/.config
+    cp -r ~/.local/share/omakub/configs/wezterm ~/.config
 fi

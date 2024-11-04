@@ -1,5 +1,5 @@
-cp ~/.local/share/omkub/configs/gitconfig ~/.gitconfig
-cp ~/.local/share/omkub/configs/gitignore ~/.gitignore
+cp ~/.local/share/omakub/configs/gitconfig ~/.gitconfig
+cp ~/.local/share/omakub/configs/gitignore ~/.gitignore
 
 # Set common git aliases
 git config --global alias.co checkout
