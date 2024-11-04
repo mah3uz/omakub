@@ -1,3 +1,4 @@
+cargo install git-delta
 cp ~/.local/share/omakub/configs/gitconfig ~/.gitconfig
 cp ~/.local/share/omakub/configs/gitignore ~/.gitignore
 
