@@ -9,6 +9,3 @@ git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.o
 # Configure the bash shell using Omakub defaults
 [ -f "$HOME/.zshrc" ] && mv ~/.zshrc ~/.zshrc.bak
 cp ~/.local/share/omakub/configs/zshrc ~/.zshrc
-
-# Load the PATH for use later in the installers
-source ~/.local/share/omakub/defaults/zsh/shell
