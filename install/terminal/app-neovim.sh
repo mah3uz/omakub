@@ -7,14 +7,12 @@ sudo cp -R nvim-linux64/share /usr/local/
 rm -rf nvim-linux64 nvim.tar.gz
 cd -
 
-# Only attempt to set configuration if Neovim has never been run
-if [ ! -d "$HOME/.config/nvim" ]; then
-	# Use LazyVim
-	git clone https://github.com/mah3uz/nvim.git ~/.config/nvim
+# Use my astrovim config
+git clone https://github.com/mah3uz/nvim.git ~/.config/nvim
 
-	# Default to Tokyo Night theme
-	cp ~/.local/share/omakub/themes/tokyo-night/neovim.lua ~/.config/nvim/lua/plugins/theme.lua
-fi
+# Default to Tokyo Night theme
+cp ~/.local/share/omakub/themes/tokyo-night/neovim.lua ~/.config/nvim/lua/plugins/theme.lua
+
 
 # Replace desktop launcher with one running inside Alacritty
 if [[ -d ~/.local/share/applications ]]; then

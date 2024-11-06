@@ -1,9 +1,11 @@
 # Favorite apps for dock
 apps=(
 	"google-chrome.desktop"
+	"Wezterm.desktop"
 	"Alacritty.desktop"
 	"Neovim.desktop"
 	"code.desktop"
+	"zed.desktop"
 	"WhatsApp.desktop"
 	"signal-desktop.desktop"
 	"Zoom.desktop"
