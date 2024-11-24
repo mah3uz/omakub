@@ -10,3 +10,12 @@ if command -v fzf &> /dev/null; then
   source /usr/share/bash-completion/completions/fzf
   source /usr/share/doc/fzf/examples/key-bindings.bash
 fi
+
+if command -v starship &> /dev/null; then
+  eval "$(starship init bash)"
+fi
+
+# Init ohmyposh
+# if command -v ohmyposh &> /dev/null; then
+#   eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/config.toml)"
+# fi

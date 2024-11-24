@@ -48,7 +48,11 @@ plugins=(
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
-eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.toml)"
+# Init ohmyposh
+# eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.toml)"
+
+# Init starship
+eval "$(starship init zsh)"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
