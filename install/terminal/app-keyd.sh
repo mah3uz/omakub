@@ -1,6 +1,6 @@
 # Key remapping service for ubuntu
 # https://github.com/rvaiya/keyd?tab=readme-ov-file#installation
-sudo apt install build-essential
+sudo apt install build-essential -y
 git clone https://github.com/rvaiya/keyd /tmp/keyd
 cd /tmp/keyd
 make && sudo make install
