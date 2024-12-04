@@ -8,6 +8,3 @@ source ~/.local/share/omakub/defaults/bash/shell
 [ -f "~/.inputrc" ] && mv ~/.inputrc ~/.inputrc.bak
 # Configure the inputrc using Omakub defaults
 cp ~/.local/share/omakub/configs/inputrc ~/.inputrc
-
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-exec bash
