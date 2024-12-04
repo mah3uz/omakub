@@ -5,6 +5,3 @@ wget -qO gum.deb "https://github.com/charmbracelet/gum/releases/download/v${GUM_
 sudo apt-get install -y ./gum.deb
 rm gum.deb
 cd -
-
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-exec bash
